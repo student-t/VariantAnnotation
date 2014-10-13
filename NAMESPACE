@@ -1,0 +1,146 @@
+useDynLib(VariantAnnotation, .registration=TRUE)
+
+import(methods)
+
+import(BiocGenerics)
+
+import(S4Vectors)
+
+import(GenomeInfoDb)
+
+import(GenomicRanges)
+
+import(Rsamtools)
+
+import(zlibbioc)
+
+importClassesFrom(Biobase, 
+    AssayData
+)
+
+importFrom(Biobase,
+    sampleNames, "sampleNames<-", samples
+)
+
+importClassesFrom(AnnotationDbi, 
+    AnnotationDb
+)
+
+importMethodsFrom(AnnotationDbi, 
+    colnames, exists, ncol, nrow,
+    columns, keys, keytypes, select
+)
+
+importFrom(GenomicFeatures, 
+    extractTranscriptSeqs
+)
+
+importClassesFrom(GenomicFeatures, 
+    TxDb
+)
+
+importMethodsFrom(GenomicFeatures, 
+    cdsBy, exons, transcripts,
+    fiveUTRsByTranscript, threeUTRsByTranscript,
+    distance
+)
+
+importFrom(IRanges, 
+    CharacterList, FilterRules, IntegerList, 
+    IRanges, LogicalList, NumericList, PartitioningByEnd, PartitioningByWidth,
+    seqsplit, splitAsList, successiveViews, FilterMatrix, expand,
+    endoapply, filterRules, subsetByFilter
+)
+
+importClassesFrom(IRanges, 
+    CharacterList, Ranges, RangesList, RangedData,
+    FilterRules, FilterMatrix
+)
+
+importMethodsFrom(IRanges, 
+    as.matrix, as.vector,
+    countOverlaps, elementLengths, end, eval, findOverlaps, 
+    follow, gsub, lapply, narrow, order, 
+    precede, rev, shift,
+    split, start, "start<-",
+    unlist, which, width, 
+    expand, subsetByFilter
+)
+
+importFrom(XVector, "subseq", "subseq<-")
+
+importFrom(Biostrings,
+    AAStringSet, DNAStringSet, DNAStringSetList, DNA_BASES
+)
+
+importMethodsFrom(Biostrings,
+    nchar, reverseComplement, substr, translate
+)
+
+importClassesFrom(Biostrings, 
+    DNAStringSet, DNAStringSetList
+)
+
+importMethodsFrom(DBI, 
+    dbCommit, dbConnect, dbDisconnect, dbExistsTable, 
+    dbGetQuery, dbReadTable, dbWriteTable, dbListTables, 
+    dbListFields
+)
+
+importClassesFrom(BSgenome, 
+    BSgenome
+)
+
+importFrom(rtracklayer,
+    liftOver
+)
+
+importFrom(utils, 
+    txtProgressBar, setTxtProgressBar
+)
+
+exportClassPattern("^.*$")
+
+export(
+    VCF, VCFHeader, reference, 
+    header, "header<-", meta, "meta<-",
+    vcfWhich, "vcfWhich<-", vcfFixed, "vcfFixed<-", vcfInfo, "vcfInfo<-", 
+    vcfGeno, "vcfGeno<-", vcfSamples, "vcfSamples<-", vcfTrimEmpty,
+    "vcfTrimEmpty<-",
+    duplicateRSID, CodingVariants, IntronVariants,
+    FiveUTRVariants, ThreeUTRVariants, IntergenicVariants,
+    SpliceSiteVariants, PromoterVariants, AllVariants,
+    upstream, "upstream<-", downstream, "downstream<-",
+    promoter, "promoter<-", intergenic, "intergenic<-",
+    probabilityToSnpMatrix, GLtoGP, restrictToSNV,
+    VRanges, VRangesList, asVCF, softFilter, resetFilter,
+    totalDepth, altDepth, refDepth, sampleNames, "sampleNames<-", altFraction,
+    softFilterMatrix, "softFilterMatrix<-", hardFilters, "hardFilters<-",
+    called, stackSamples, "altDepth<-", "refDepth<-", "totalDepth<-",
+    probabilityToSnpMatrix, GLtoGP,
+    readInfo, readGeno, readGT,
+    tabulate, VRangesScanVcfParam, readVcfAsVRanges,
+    isSNV, isInsertion, isDeletion, isIndel, isTransition,
+    isSubstitution
+)
+
+exportMethods(
+    filterVcf, scanVcf, scanVcfHeader, ScanVcfParam,
+    readVcf, writeVcf, expand,
+    readVcfLongForm, ## Defunct
+    predictCoding, getTranscriptSeqs, refLocsToLocalLocs, 
+    genotypeToSnpMatrix, snpSummary,
+    locateVariants, summarizeVariants,
+    isSNV, isInsertion, isDeletion, isIndel, isTransition,
+    isSubstitution,
+
+    fixed, "fixed<-", ref, "ref<-", alt, "alt<-", qual, "qual<-",
+    filt, "filt<-", info, "info<-", geno, "geno<-", strand, 
+    "strand<-", "[", "[<-", cbind, rbind, "mcols<-", 
+
+    genome, seqlevels, seqinfo,
+
+    reference, samples, header, meta,
+
+    keys, keytypes, columns, select
+)
