@@ -1,0 +1,6 @@
+SAMVARS=$(shell echo 'cat(Rsamtools:::.pkgMk())' |\
+    "${R_HOME}/bin/R" --vanilla --slave)
+include $(SAMVARS)
+
+PKG_LIBS=$(SAMTOOLS_LIBS)
+PKG_CPPFLAGS=$(SAMTOOLS_CPPFLAGS)
